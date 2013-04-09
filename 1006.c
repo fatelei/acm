@@ -5,39 +5,48 @@ char str[1010];
 
 int main() {
 	char tmp;
-	int i, j;
-	int length = 0;
-	int left = 0;
-	int right = 0;
-	int mid = 0;
-	int cur = 0;
+	int i;
+	int count1, count2;
 	while (scanf("%s", str) != EOF) {
 		getchar();
-		length = strlen(str);
-		left = right = mid = 0;
-		for (i = 0; i < length; i++) {
-			if (str[i] == 'z') {
-				break;
-			} else {
-				left++;
-			}
+		count1 = count2 = 0;
+		i = 0;
+		while (str[i] == 'o') {
+		    count1++;
+		    i++;  
 		}
-		cur = i + 1;
-		for (i = cur; i < length; i++) {
-			if (str[i] == 'j') {
-				break;
-			} else {
-				mid++;
-			}
+		if (str[i] != 'z') {
+		    printf("Wrong Answer\n");
+		    continue;
 		}
-		cur = i + 1;
-		for (i = cur; i < length; i++) {
-			right++;
+		i++;
+		if (str[i] != 'o') {
+		    printf("Wrong Answer\n");
+		    continue;
 		}
-		if ((left * mid) == right) {
-			printf("Accepted\n");
+		while (str[i] == 'o') {
+		    i++;
+		}
+		if (str[i] != 'j') {
+		    printf("Wrong Answer\n");
+		    continue;
+		}
+		i++;
+		while (str[i] == 'o') {
+		    count2++;
+		    i++;
+		}
+		if (count1 <= count2 && str[i] == 0) {
+		    if (count1 == 0 && count2 != 0) {
+		        printf("Wrong Answer\n");
+		        continue;
+		    } else {
+		        printf("Accepted\n");
+		        continue;
+		    }
 		} else {
-			printf("Wrong Answer\n");
+		    printf("Wrong Answer\n");
+		    continue;
 		}
 	}
 	return 0;
