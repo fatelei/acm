@@ -33,7 +33,8 @@ class Solution:
                     if points[i].x == points[j].x and points[i].y != points[j].y:
                         slop["inf"] += 1
                     elif points[i].x != points[j].x:
-                        k = (1.0 * (points[j].y - points[i].y)) / (points[j].x - points[i].x)
+                        k = (
+                            1.0 * (points[j].y - points[i].y)) / (points[j].x - points[i].x)
 
                         slop[k] = 1 if k not in slop else slop[k] + 1
                     elif points[i].x == points[j].x and points[i].y == points[j].y:
@@ -42,9 +43,3 @@ class Solution:
                 cur_max = max(cur_max, max(slop.values()) + same)
 
             return cur_max
-
-
-if __name__ == "__main__":
-    s = Solution()
-    points = [(0, 0), (1, 1)]
-    s.maxPoints(points)
